@@ -1,0 +1,96 @@
+classDiagram
+    class Inmueble {
+        #precio: float
+        #id: int
+        #area: int
+        #direccion: str
+        +imprimir()
+        +calcular_precio(valor_area: float)
+    }
+    
+    class Vivienda {
+        #num_habitaciones: int
+        #num_banos: int
+        +imprimir()
+    }
+    
+    class Casa {
+        #num_pisos: int
+        +imprimir()
+    }
+    
+    class Apartamento {
+        +imprimir()
+    }
+    
+    class CasaRural {
+        #valor_area: float = 1500000
+        #distancia_cabecera: int
+        #altitud: int
+        +imprimir()
+    }
+    
+    class CasaUrbana {
+        +imprimir()
+    }
+    
+    class ApartamentoFamiliar {
+        #valor_area: float = 2000000
+        #valor_administracion: int
+        +imprimir()
+    }
+    
+    class ApartaEstudio {
+        #valor_area: float = 1500000
+        +imprimir()
+    }
+    
+    class CasaConjuntoCerrado {
+        #valor_area: float = 2500000
+        #valor_administracion: int
+        #tiene_piscina: bool
+        #tiene_campos_deportivos: bool
+        +imprimir()
+    }
+    
+    class CasaIndependiente {
+        #valor_area: float = 3000000
+        +imprimir()
+    }
+
+    class TipoInmueble {
+        <<enumeration>>
+        INTERNO
+        CALLE
+    }
+    
+    class Local {
+        #tipo: TipoInmueble
+        +imprimir()
+    }
+    
+    class LocalComercial {
+        #valor_area: float = 3000000
+        #centro_comercial: str
+        +imprimir()
+    }
+    
+    class Oficina {
+        #valor_area: float = 3000000
+        #es_gobierno: bool
+        +imprimir()
+    }
+
+    Inmueble <|-- Vivienda
+    Vivienda <|-- Casa
+    Vivienda <|-- Apartamento
+    Casa <|-- CasaRural
+    Casa <|-- CasaUrbana
+    Apartamento <|-- ApartamentoFamiliar
+    Apartamento <|-- ApartaEstudio
+    CasaUrbana <|-- CasaConjuntoCerrado
+    CasaUrbana <|-- CasaIndependiente
+    Inmueble <|-- Local
+    Local --|> TipoInmueble
+    Local <|-- LocalComercial
+    Local <|-- Oficina

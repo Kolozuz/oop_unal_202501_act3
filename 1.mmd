@@ -1,0 +1,38 @@
+classDiagram
+    class Cuenta {
+        #saldo: float
+        #tasa_anual: float
+        #num_consignaciones: int = 0
+        #num_retiros: str = 0
+        #comision_mensual: float = 0
+        
+        «constructor»+Cuenta(saldo: float, tasa_anual: float)
+        +imprimir()
+        +consignar(cantidad: float)
+        +retirar(cantidad: float)
+        +calcular_interes()
+        +extracto_mensual()
+    }
+
+    class CuentaAhorros {
+        #activa: bool
+        
+        «constructor»+CuentaCorriente(saldo: float, tasa_anual: float)
+        +imprimir()
+        +consignar(cantidad: float)
+        +retirar(cantidad: float)
+        +extracto_mensual()
+    }
+
+    class CuentaCorriente {
+        #sobregiro: float
+        
+        «constructor»+CuentaCorriente(saldo: float, tasa_anual: float)
+        +imprimir()
+        +consignar(cantidad: float)
+        +retirar(cantidad: float)
+        +extracto_mensual()
+    }
+
+    Cuenta <|-- CuentaAhorros
+    Cuenta <|-- CuentaCorriente
